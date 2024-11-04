@@ -1,0 +1,118 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+body {
+	background-color: grey;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.section {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50rem;
+	height: 50rem;
+
+	margin: 10px;
+	background-color: rgb(175, 175, 175);
+}
+
+button {
+	width: 4rem;
+	height: 2rem;
+}
+
+.body-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+}
+.head {
+	font-size: 100px;
+}
+.torso {
+	width: 60px;
+	height: 120px;
+	background-color: #f0c987;
+	border-radius: 15px;
+	position: relative;
+}
+.arm {
+	width: 20px;
+	height: 80px;
+	background-color: #f0c987;
+	border-radius: 10px;
+	position: absolute;
+}
+.arm.left {
+	left: -30px;
+	top: 20px;
+}
+.arm.right {
+	right: -30px;
+	top: 20px;
+}
+.leg {
+	width: 20px;
+	height: 100px;
+	background-color: #f0c987;
+	border-radius: 10px;
+	margin: 5px;
+}
+.legs {
+	display: flex;
+	justify-content: space-between;
+	width: 100px;
+}
+
+.health,
+.sleep,
+.food {
+	margin: 2px;
+	display: flex;
+	align-items: center;
+	i {
+		font-size: 42px;
+	}
+	color: red;
+	font-weight: 600;
+	font-size: 24px;
+}
+
+.bars {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+}
+
+.name {
+	position: absolute;
+	top: 25%;
+	right: 40%;
+	margin: 15px;
+	font-size: 24px;
+}
+
+.money {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 20px;
+	color: green;
+	font-weight: 600;
+	font-size: 24px;
+}
