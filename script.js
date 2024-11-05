@@ -12,6 +12,7 @@ const animal = {
 
 const savedAnimal = localStorage.getItem("animal");
 const char = document.querySelector(".character");
+const btn = document.querySelectorAll(".btn-style");
 if (savedAnimal) {
 	Object.assign(animal, JSON.parse(savedAnimal));
 	updateUI();
@@ -69,6 +70,7 @@ document.querySelector(".work").addEventListener("click", () => {
 		char.classList.remove("bike");
 		char.innerText = "🧍‍♂️";
 	}, 7800);
+	btnOff(7800);
 });
 
 document.querySelector(".rest").addEventListener("click", () => {
@@ -86,13 +88,24 @@ document.querySelector(".rest").addEventListener("click", () => {
 	setTimeout(() => {
 		char.innerText = "🧍‍♂️";
 	}, 4000);
+
+	btnOff(4000);
 });
 
 document.querySelector(".eat").addEventListener("click", () => {
-	animal.hunger += 10;
-	console.log(animal.hunger);
-	if (animal.hunger > 100) animal.hunger = 100;
-	document.querySelector(".food").innerHTML = `<i>🍖</i>${animal.hunger}/100`;
+	char.innerText = "🍜😃";
+	for (let i = 1; i <= 4; i++) {
+		setTimeout(() => {
+			animal.hunger += 5;
+			if (animal.hunger > 100) animal.hunger = 100;
+			document.querySelector(".food").innerHTML = `<i>🍖</i>${animal.hunger}/100`;
+		}, i * 1000);
+	}
+	setTimeout(() => {
+		char.innerText = "🧍‍♂️";
+	}, 4000);
+
+	btnOff(4000);
 });
 
 document.querySelector(".restart").addEventListener("click", () => {
@@ -104,3 +117,14 @@ document.querySelector(".restart").addEventListener("click", () => {
 });
 
 timeManagment();
+
+function btnOff(num) {
+	btn.forEach((e) => {
+		e.disabled = true;
+	});
+	setTimeout(() => {
+		btn.forEach((e) => {
+			e.disabled = false;
+		});
+	}, num);
+}
