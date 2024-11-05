@@ -34,47 +34,13 @@ button {
 }
 
 .body-container {
+	width: 100%;
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	justify-content: center;
 	margin-top: 50px;
-}
-.head {
-	font-size: 100px;
-}
-.torso {
-	width: 60px;
-	height: 120px;
-	background-color: #f0c987;
-	border-radius: 15px;
-	position: relative;
-}
-.arm {
-	width: 20px;
-	height: 80px;
-	background-color: #f0c987;
-	border-radius: 10px;
-	position: absolute;
-}
-.arm.left {
-	left: -30px;
-	top: 20px;
-}
-.arm.right {
-	right: -30px;
-	top: 20px;
-}
-.leg {
-	width: 20px;
-	height: 100px;
-	background-color: #f0c987;
-	border-radius: 10px;
-	margin: 5px;
-}
-.legs {
-	display: flex;
-	justify-content: space-between;
-	width: 100px;
+	.character {
+		font-size: 190px;
+	}
 }
 
 .health,
@@ -83,12 +49,12 @@ button {
 	margin: 2px;
 	display: flex;
 	align-items: center;
-	i {
-		font-size: 42px;
-	}
 	color: red;
 	font-weight: 600;
 	font-size: 24px;
+	i {
+		font-size: 42px;
+	}
 }
 
 .bars {
@@ -101,8 +67,8 @@ button {
 
 .name {
 	position: absolute;
-	top: 25%;
-	right: 40%;
+	top: 80%;
+	right: 41%;
 	margin: 15px;
 	font-size: 24px;
 }
@@ -115,4 +81,46 @@ button {
 	color: green;
 	font-weight: 600;
 	font-size: 24px;
+}
+
+.restart {
+	position: absolute;
+	bottom: 10%;
+	display: none;
+}
+
+.bike {
+	display: inline-block;
+	font-size: 50px;
+	position: absolute;
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	animation: moveAndFlip 5s linear infinite;
+}
+
+@keyframes moveAndFlip {
+	0% {
+		right: 0;
+		transform: scaleX(1);
+	}
+	25% {
+		right: 550px;
+		transform: scaleX(1);
+	}
+	26% {
+		right: 550px;
+		transform: scaleX(-1);
+	}
+	50% {
+		right: 0;
+		transform: scaleX(-1);
+	}
+	51% {
+		right: 0;
+		transform: scaleX(1);
+	}
+	100% {
+		right: 0;
+		transform: scaleX(1);
+	}
 }
