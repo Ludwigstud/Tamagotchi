@@ -47,7 +47,7 @@ function timeManagment() {
 				document.querySelector(".restart").style.display = "block";
 				clearInterval(test);
 			}
-		}, 1000);
+		}, 5500);
 	}
 	setInterval(() => {
 		animal.sleep--;
@@ -56,7 +56,7 @@ function timeManagment() {
 		if (animal.sleep <= 0) {
 			animal.sleep = 100;
 		}
-	}, 5000);
+	}, 8000);
 }
 
 document.querySelector(".work").addEventListener("click", () => {
@@ -72,10 +72,20 @@ document.querySelector(".work").addEventListener("click", () => {
 });
 
 document.querySelector(".rest").addEventListener("click", () => {
-	animal.sleep += 10;
-	console.log(animal.sleep);
 	if (animal.sleep > 100) animal.sleep = 100;
 	document.querySelector(".sleep").innerHTML = `<i>🥱</i>${animal.sleep}/100`;
+	char.innerText = "🛌";
+
+	for (let i = 1; i <= 4; i++) {
+		setTimeout(() => {
+			animal.sleep += 4;
+			if (animal.sleep > 100) animal.sleep = 100;
+			document.querySelector(".sleep").innerHTML = `<i>🥱</i>${animal.sleep}/100`;
+		}, i * 1000);
+	}
+	setTimeout(() => {
+		char.innerText = "🧍‍♂️";
+	}, 4000);
 });
 
 document.querySelector(".eat").addEventListener("click", () => {
