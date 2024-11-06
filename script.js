@@ -8,11 +8,19 @@ const animal = {
 	level: 0,
 	xp: 0,
 	money: 0,
+	inventory: {
+		Apple: 1,
+		Carrot: 1,
+		EnergyDrink: 1,
+		Hamburger: 1,
+		Sprite: 1,
+	},
 };
-
 const savedAnimal = localStorage.getItem("animal");
 const char = document.querySelector(".character");
 const btn = document.querySelectorAll(".btn-style");
+const inventory = document.querySelector(".inventory-list");
+inventory.style.display = "none";
 if (savedAnimal) {
 	Object.assign(animal, JSON.parse(savedAnimal));
 	updateUI();
@@ -46,6 +54,10 @@ function timeManagment() {
 				console.log("lil bro just died :(");
 				char.innerText = "⚰️";
 				document.querySelector(".restart").style.display = "block";
+				btn.forEach((e) => {
+					e.disabled = true;
+				});
+
 				clearInterval(test);
 			}
 		}, 5500);
@@ -58,6 +70,21 @@ function timeManagment() {
 			animal.sleep = 100;
 		}
 	}, 8000);
+
+	const timeSecond = setInterval(() => {
+		inventory.innerText = "";
+		// KOLLA PÅ DETTA NÄSTA GÅNG DU PÅBÖRJAR ARBETE!!!!!!
+		// for (const inv in animal.inventory) {
+		// 	const div = document.createElement("div");
+		// 	const li = document.createElement("li");
+		// 	const button = document.createElement("button");
+		// 	li.innerText = `${inv}`;
+		// 	button.innerText = "Eat";
+		// 	inventory.appendChild(div);
+		// 	div.appendChild(li);
+		// 	div.appendChild(button);
+		// }
+	}, 1000);
 }
 
 document.querySelector(".work").addEventListener("click", () => {
@@ -112,8 +139,19 @@ document.querySelector(".restart").addEventListener("click", () => {
 	animal.health = 100;
 	document.querySelector(".restart").style.display = "none";
 	document.querySelector(".health").innerHTML = `<i>💖</i>${animal.health}/100</div>`;
+	btn.forEach((e) => {
+		e.disabled = false;
+	});
 	char.innerText = "🧍‍♂️";
 	timeManagment();
+});
+
+document.querySelector(".inventory").addEventListener("click", () => {
+	if (inventory.style.display == "none") {
+		inventory.style.display = "flex";
+	} else {
+		inventory.style.display = "none";
+	}
 });
 
 timeManagment();

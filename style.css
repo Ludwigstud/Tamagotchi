@@ -107,6 +107,35 @@ button {
 	animation: moveAndFlip 5s linear infinite;
 }
 
+.inventory-list {
+	display: none;
+	position: absolute;
+	right: 0;
+	margin: 20px;
+	border-radius: 5px;
+
+	border: 1px solid red;
+
+	flex-direction: column;
+	h2 {
+		text-align: center;
+		text-decoration: underline;
+	}
+	div {
+		margin: 10px;
+		display: flex;
+		justify-content: space-around;
+		li {
+			margin: 2px;
+			display: block;
+			padding-right: 10px;
+		}
+		button {
+			height: 25px;
+		}
+	}
+}
+
 @keyframes moveAndFlip {
 	0% {
 		right: 0;
