@@ -8,6 +8,7 @@ const animal = {
 	level: 0,
 	xp: 0,
 	money: 0,
+	highScore: 0,
 	inventory: {},
 };
 
@@ -23,7 +24,9 @@ const char = document.querySelector(".character");
 const btn = document.querySelectorAll(".btn-style");
 const inventory = document.querySelector(".inventory-list");
 const store = document.querySelector(".store");
+const click = document.querySelector(".click");
 inventory.style.display = "none";
+store.style.display = "none";
 console.log(savedAnimal);
 if (savedAnimal) {
 	animalParse = JSON.parse(savedAnimal);
@@ -47,6 +50,7 @@ function updateUI() {
 
 function updateInventoryUI() {
 	inventory.innerText = "";
+	inventory.innerHTML = "<h2>Inventory</h2>";
 
 	for (const itemName in animal.inventory) {
 		const div = document.createElement("div");
@@ -70,7 +74,7 @@ function updateInventoryUI() {
 				updateInventoryUI();
 				updateUI();
 			} else {
-				alert("No more of this item left!");
+				// alert("No more of this item left!");
 			}
 		});
 
@@ -103,7 +107,7 @@ function timeManagment() {
 
 				clearInterval(test);
 			}
-		}, 5500);
+		}, 5520);
 	}
 	setInterval(() => {
 		animal.sleep--;
@@ -125,7 +129,7 @@ document.querySelector(".work").addEventListener("click", () => {
 	char.innerText = "🚴";
 
 	setTimeout(() => {
-		animal.money += 10;
+		animal.money += 23;
 		document.querySelector(".money").innerText = `Money: ${animal.money}$`;
 		char.classList.remove("bike");
 		char.innerText = "🧍‍♂️";
@@ -216,6 +220,58 @@ document.querySelectorAll(".buy-item").forEach((button, index) => {
 		}
 	});
 });
+
+document.querySelector(".play").addEventListener("click", () => {
+	playGame();
+});
+
+function playGame() {
+	btnOff(10000);
+	let clicks = 0;
+	char.innerText = "";
+	const clickButton = document.createElement("button");
+	clickButton.classList.add("click");
+	clickButton.innerText = "Click!";
+	document.querySelector(".section").appendChild(clickButton);
+
+	const highScoreDisplay = document.createElement("div");
+	highScoreDisplay.classList.add("high-score-display");
+	highScoreDisplay.innerText = `High Score: ${animal.highScore || 0}`;
+	highScoreDisplay.style.position = "absolute";
+	highScoreDisplay.style.top = "10%";
+	highScoreDisplay.style.left = "10%";
+	highScoreDisplay.style.fontSize = "34px";
+
+	document.querySelector(".section").appendChild(highScoreDisplay);
+
+	const gamePlay = setInterval(() => {
+		let numOne = Math.floor(Math.random() * 80) + 10;
+		let numTwo = Math.floor(Math.random() * 80) + 10;
+		clickButton.style.position = "absolute";
+		clickButton.style.top = `${numOne}%`;
+		clickButton.style.left = `${numTwo}%`;
+	}, 800);
+
+	clickButton.addEventListener("click", () => {
+		clicks++;
+	});
+
+	setTimeout(() => {
+		clearInterval(gamePlay);
+		clickButton.remove();
+
+		if (clicks > animal.highScore) {
+			animal.highScore = clicks;
+			saveAnimalData();
+		}
+		animal.money += clicks;
+		alert(`You scored ${clicks} points.`);
+		highScoreDisplay.style.display = "none";
+		char.innerText = "🧍‍♂️";
+
+		updateUI();
+	}, 10000);
+}
 
 timeManagment();
 
