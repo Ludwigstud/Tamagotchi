@@ -136,6 +136,40 @@ button {
 	}
 }
 
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.store {
+	display: none;
+	border: 1px solid black;
+	padding: 25px;
+	position: absolute;
+	left: 3%;
+	top: 20%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	.items {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+
+		div {
+			margin: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			p {
+				text-decoration: underline;
+				margin: 2px;
+			}
+		}
+	}
+}
+
 @keyframes moveAndFlip {
 	0% {
 		right: 0;
