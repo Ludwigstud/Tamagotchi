@@ -179,8 +179,25 @@ button {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	border: 2px solid red;
-	background-color: red;
+	background: radial-gradient(
+		circle,
+		#ff0000 25%,
+		#ffffff 25%,
+		#ffffff 50%,
+		#ff0000 50%,
+		#ff0000 75%,
+		#ffffff 75%
+	);
+
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	font-size: 1.2em;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes moveAndFlip {

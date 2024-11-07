@@ -231,7 +231,7 @@ function playGame() {
 	char.innerText = "";
 	const clickButton = document.createElement("button");
 	clickButton.classList.add("click");
-	clickButton.innerText = "Click!";
+	clickButton.innerText = "";
 	document.querySelector(".section").appendChild(clickButton);
 
 	const highScoreDisplay = document.createElement("div");
@@ -245,8 +245,8 @@ function playGame() {
 	document.querySelector(".section").appendChild(highScoreDisplay);
 
 	const gamePlay = setInterval(() => {
-		let numOne = Math.floor(Math.random() * 80) + 10;
-		let numTwo = Math.floor(Math.random() * 80) + 10;
+		let numOne = 20 + Math.floor(Math.random() * 70);
+		let numTwo = Math.floor(Math.random() * 70);
 		clickButton.style.position = "absolute";
 		clickButton.style.top = `${numOne}%`;
 		clickButton.style.left = `${numTwo}%`;
